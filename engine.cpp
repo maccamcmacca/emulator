@@ -3,12 +3,15 @@
 
 using namespace std;
 
-char poke[8];
+char pok[8];
 char reg[8][8];
 
 int main(){
 
-    loadMem(poke);
-    printMem(poke);
+    fillReg(reg);
+    loadMem(pok);
+    printPoke(pok);
+    poke(pok, reg);
+    printMem(reg);
 
 }

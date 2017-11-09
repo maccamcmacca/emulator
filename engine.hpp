@@ -71,3 +71,12 @@ char fillReg(char memory[8][8]){
     }
   }
 }
+
+int bintoDec(int x){
+
+    if (x / 2 != 0) {
+        bintoDec(x / 2);
+    }
+
+    //x = x;
+}

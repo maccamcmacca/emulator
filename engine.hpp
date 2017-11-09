@@ -1,7 +1,5 @@
 #include <iostream>
 
-using namespace std;
-
 void loadMem(int mem[]){
 
     for(int i = 0; i<=8; i++){
@@ -16,7 +14,7 @@ void printMem(int mem[]){
     
         for(int i = 0; i<=8; i++){
             
-            cout << mem[i];
+            std::cout << mem[i];
     
         }
     

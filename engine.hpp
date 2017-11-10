@@ -72,11 +72,15 @@ char fillReg(char memory[8][8]){
   }
 }
 
-int bintoDec(int x){
-
-    if (x / 2 != 0) {
-        bintoDec(x / 2);
+int bintoDec(int num){
+    int rem;
+ 
+    if (num <= 1){
+        cout << num;
+        return num;
     }
-
-    //x = x;
+    rem = num % 2;
+    bintoDec(num / 2);
+    cout << rem;
 }
+ 

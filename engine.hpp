@@ -83,4 +83,3 @@ int bintoDec(int num){
     bintoDec(num / 2);
     cout << rem;
 }
- 

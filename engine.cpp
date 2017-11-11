@@ -10,18 +10,8 @@ int bin = 8;
 
 int main(){
 
-    for(int i = 0; i<8; i++){
-         for(int j = 0; j<8; j++){
-            if(reg[i][1] == '0' && reg[i][2] == '0' && reg[i][3] == '0'){
-                counter = bin;    
-            }
-
-            if(reg[i][1] == '1' && reg[i][2] == '0' && reg[i][3] == '0'){
-                counter = bin;    
-            }
-        }
-    }
-   load(reg);
-   printMem(reg);
+    cout << bin << endl;
+    bin = bintoDec(bin);
+    cout << endl << bin << endl;
 
 }

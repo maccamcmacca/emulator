@@ -84,6 +84,8 @@ int bintoDec(int num){
     //num = num;
     cout << rem;
 }
+
+//
 /*THIS IS A TEMPORARY PLACEHOLDER FOR THIS WHILE I PISS ABOUT WITH THE MAIN FUNCTION
 //THIS ONLY EXISTS TO NOT CLUTTER UP MAIN ATM
 void run(){

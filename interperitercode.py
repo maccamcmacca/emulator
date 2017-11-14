@@ -91,9 +91,10 @@ def assemble(inputfile, outputfile):
 
         readit = open(inputfile, "r")
         for line in readit:
-            print line
-            r = s[3:]
-            #b = BitArray(bin=r)
+            #print line
+            r = int(s[3:])
+            b = "{0:b}.format(s)"
+            print b
 
         writeit = open(outputfile, "a")
         if s[:3] == "JMP":
@@ -121,7 +122,7 @@ def assemble(inputfile, outputfile):
             s = "001"
             l = "\n"
             writeit.write(s)
-            #writeit.writelines(str(b.uint))
+            writeit.writelines(b)
             writeit.writelines(l)
 
         if s[:3] == "STP":

@@ -5,11 +5,13 @@ using namespace std;
 
 char pok[8];
 char reg[8][8];
-int bin = 42;
+int counter;
+int bin = 8;
 
 int main(){
 
-    bintoDec(bin);
-    cout << bin;
+    cout << bin << endl;
+    bin = bintoDec(bin);
+    cout << endl << bin << endl;
 
 }

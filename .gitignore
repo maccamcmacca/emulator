@@ -1,0 +1,4 @@
+*.out
+testassem.txt
+.vscode
+*.json

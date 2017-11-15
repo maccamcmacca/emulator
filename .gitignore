@@ -2,6 +2,5 @@
 testassem.txt
 .vscode
 *.json
-*.pyc
 test.py
 testass.txt

@@ -1,9 +1,10 @@
 from bitstring import BitArray 
 
+#dissassembles binary files
 def disassemble(inputfile, outputfile):
     with open(inputfile) as f:
         content = f.readlines()
-    # you may also want to remove whitespace characters like `\n` at the end of each line
+    #the value in strip is what characters are ommited during the read
     content = [x.strip() for x in content]
 
 
@@ -13,10 +14,12 @@ def disassemble(inputfile, outputfile):
         
         readit = open(inputfile, "r")
         for line in readit:
+            #gets every character past the 3rd
             r = s[3:]
             b = BitArray(bin=r)
-
+        #append so that everything is looped and written
         writeit = open(outputfile, "a")
+        #if statements that checks for the opcodes
         if s[:3] == "000":
             s = "JMP "
             l = "\n"
@@ -35,7 +38,7 @@ def disassemble(inputfile, outputfile):
             s = "STO "
             l = "\n"
             writeit.write(s)
-            writeit.writelines(str(b.uint))
+            writeit.writelinstring splites(str(b.uint))
             writeit.writelines(l)
 
         if s[:3] == "001":
@@ -43,7 +46,7 @@ def disassemble(inputfile, outputfile):
             l = "\n"
             writeit.write(s)
             writeit.writelines(str(b.uint))
-            writeit.writelines(l)
+            writeit.writelinstring splites(l)
 
         if s[:3] == "011":
             s = "STP "
@@ -53,7 +56,7 @@ def disassemble(inputfile, outputfile):
             writeit.writelines(l)
         
         if s[:3] == "111":
-            s = "MUL "
+            s = "MUL "string split
             l = "\n"
             writeit.write(s)
             writeit.writelines(str(b.uint))
@@ -72,20 +75,21 @@ def disassemble(inputfile, outputfile):
             writeit.write(s)
             writeit.writelines(str(b.uint))
             writeit.writelines(l)
-
+#assembles assembly code into binary
 def assemble(inputfile, outputfile):
     with open(inputfile) as f:
         content = f.readlines()
-    # you may also want to remove whitespace characters like `\n` at the end of each line
+    #the value in strip is what characters are ommited during the read
     content = [x.strip(" ") for x in content]
 
     for w in range(len(content)):
-        
+        #sets things up, also makes the binary correctly inputed
         s = content[w]
         r = int(s[3:])
         b = "{0:b}".format(r)
-        
+        #append so that everything is looped and written
         writeit = open(outputfile, "a")
+        #if statements that changes assembly to opcodes
         if s[:3] == "JMP":
             s = "000"
             writeit.write(s)
@@ -119,7 +123,7 @@ def assemble(inputfile, outputfile):
         if s[:3] == "ADD":
             s = "010"
             writeit.write(s)
-
+        #adds the decimal codes in binary following the opcode
         writeit.write(str(b).zfill(5))
         writeit.write("\n")
 

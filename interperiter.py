@@ -1,5 +1,5 @@
 from bitstring import BitArray 
-import interperitercode
+    import interperitercode
 
 x = "error"
 
@@ -13,14 +13,19 @@ while x == "error":
         x = "disassemble"
     if asordis == "error":
         print "Put in 1 or 2 you goddamn commie"
+
 #this means quite literally what it is
 inputfile = raw_input("Enter the file you would like to " + x + ": ")
 outfile = raw_input("Enter the output file: ")
 
 #basically does the function that the user selects
 if asordis == 1:
+    wipe(outfile)
     interperitercode.assemble(inputfile, outfile)
+
 if asordis == 2:
     interperitercode.disassemble(inputfile, outfile)
+    wipe(outfile)
+
 #looks fancy
 print"---------------------------------\n\tFunction Complete\n---------------------------------"

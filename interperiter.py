@@ -11,7 +11,7 @@ while x == "error":
         x = "assemble"
     if asordis == 2:
         x = "disassemble"
-    else:
+    if asordis == "error":
         print "Put in 1 or 2 you goddamn commie"
 #this means quite literally what it is
 inputfile = raw_input("Enter the file you would like to " + x + ": ")

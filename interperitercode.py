@@ -6,16 +6,13 @@ def disassemble(inputfile, outputfile):
     # you may also want to remove whitespace characters like `\n` at the end of each line
     content = [x.strip() for x in content]
 
-    print content
 
     for w in range(len(content)):
         
         s = content[w]
-        #print s[:3]
-
+        
         readit = open(inputfile, "r")
         for line in readit:
-            print line
             r = s[3:]
             b = BitArray(bin=r)
 
@@ -82,79 +79,47 @@ def assemble(inputfile, outputfile):
     # you may also want to remove whitespace characters like `\n` at the end of each line
     content = [x.strip(" ") for x in content]
 
-    print content
-
     for w in range(len(content)):
         
         s = content[w]
-        print s[3:]
         r = int(s[3:])
         b = "{0:b}".format(r)
-        
-        """readit = open(inputfile, "r")
-        for line in readit:
-            print line,
-        
-            print str(b)"""
         
         writeit = open(outputfile, "a")
         if s[:3] == "JMP":
             s = "000"
-            #l = "\n"
             writeit.write(s)
-            #writeit.writelines(str(b.uint))
-            #writeit.writelines(l)
         
         if s[:3] == "LDN":
             s = "100"
-            #l = "\n"
             writeit.write(s)
-            #writeit.writelines(str(b.uint))
-            #writeit.writelines(l)
         
         if s[:3] == "STO":
             s = "110"
-            #l = "\n"
             writeit.write(s)
-            #writeit.writelines(str(b.uint))
-            #writeit.writelines(l)
+            
 
         if s[:3] == "SUB":
             s = "001"
-            #l = "\n"
             writeit.write(s)
-            #writeit.writelines(b)
-            #writeit.writelines(l)
+            
 
         if s[:3] == "STP":
             s = "011"
-            #l = "\n"
             writeit.write(s)
-            #writeit.writelines(str(b.uint))
-            #writeit.writelines(l)
         
         if s[:3] == "MUL":
             s = "111"
-            #l = "\n"
             writeit.write(s)
-            #writeit.writelines(str(b.uint))
-            #writeit.writelines(l)
 
         if s[:3] == "DIV":
             s = "101"
-            #l = "\n"
             writeit.write(s)
-            #writeit.writelines(str(b.uint))
-            #writeit.writelines(l)
 
         if s[:3] == "ADD":
             s = "010"
-            #l = "\n"
             writeit.write(s)
-            #writeit.writelines(str(b.uint))
-            #writeit.writelines(l)
 
-        #writei = open(outputfile, "a")
         writeit.write(str(b).zfill(5))
         writeit.write("\n")
 

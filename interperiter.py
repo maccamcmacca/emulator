@@ -3,12 +3,15 @@ import interperitercode
 
 x = "error"
 
-asordis = input("1: Assemble\n2: Dissassemble\nPlease enter 1 or 2: ")
+while x == "error":
+    asordis = input("1: Assemble\n2: Dissassemble\nPlease enter 1 or 2: ")
 
-if asordis == 1:
-    x = "assemble"
-if asordis == 2:
-    x = "dissassemble"
+    if asordis == 1:
+        x = "assemble"
+    if asordis == 2:
+        x = "dissassemble"
+    else:
+        print "Put in 1 or 2 you goddamn commie"
 
 inputfile = raw_input("Enter the file you would like to " + x + ": ")
 outfile = raw_input("Enter the output file: ")

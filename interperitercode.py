@@ -127,7 +127,7 @@ def assemble(inputfile, outputfile):
         writeit.write(str(b).zfill(5))
         writeit.write("\n")
 
-
+#wipes a file
 def wipe(inputfile):
     s = open(inputfile, "w")
     s.writelines("")

@@ -38,7 +38,7 @@ def disassemble(inputfile, outputfile):
             s = "STO "
             l = "\n"
             writeit.write(s)
-            writeit.writelinstring splites(str(b.uint))
+            writeit.writelines(str(b.uint))
             writeit.writelines(l)
 
         if s[:3] == "001":
@@ -46,7 +46,7 @@ def disassemble(inputfile, outputfile):
             l = "\n"
             writeit.write(s)
             writeit.writelines(str(b.uint))
-            writeit.writelinstring splites(l)
+            writeit.writelines(l)
 
         if s[:3] == "011":
             s = "STP "
@@ -56,7 +56,7 @@ def disassemble(inputfile, outputfile):
             writeit.writelines(l)
         
         if s[:3] == "111":
-            s = "MUL "string split
+            s = "MUL "
             l = "\n"
             writeit.write(s)
             writeit.writelines(str(b.uint))
@@ -131,3 +131,6 @@ def assemble(inputfile, outputfile):
 def wipe(inputfile):
     s = open(inputfile, "w")
     s.writelines("")
+
+def engine(inputfile):
+    print "deek"

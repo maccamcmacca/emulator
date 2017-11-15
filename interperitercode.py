@@ -133,4 +133,6 @@ def wipe(inputfile):
     s.writelines("")
 
 def engine(inputfile):
-    print "deek"
+    readfile = open(inputfile)
+    for line in readfile:
+	print line,

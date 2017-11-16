@@ -1,5 +1,5 @@
 from bitstring import BitArray 
-    import interperitercode
+import enginecode
 
 x = "error"
 
@@ -20,12 +20,12 @@ outfile = raw_input("Enter the output file: ")
 
 #basically does the function that the user selects
 if asordis == 1:
-    wipe(outfile)
-    interperitercode.assemble(inputfile, outfile)
+    enginecode.wipe(outfile)
+    enginecode.assemble(inputfile, outfile)
 
 if asordis == 2:
-    interperitercode.disassemble(inputfile, outfile)
-    wipe(outfile)
+    enginecode.disassemble(inputfile, outfile)
+    enginecode.wipe(outfile)
 
 #looks fancy
 print"---------------------------------\n\tFunction Complete\n---------------------------------"

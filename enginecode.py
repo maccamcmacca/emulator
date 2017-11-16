@@ -133,6 +133,30 @@ def wipe(inputfile):
     s.writelines("")
 
 def engine(inputfile):
-    readfile = open(inputfile)
-    for line in readfile:
-	print line,
+    with open(inputfile) as l:
+        content = l.readlines()
+    
+    content = [x.strip() for x in content]
+    print content
+    accum = 0
+
+    while s[:3] != "011":
+        for w in range(len(content)):
+            r = content[w]
+
+            if s[:3] == "000":
+                accum = content[w]
+            if s[:3] == "100":
+                    
+            if s[:3] == "110":
+                    
+            if s[:3] == "001":
+                    
+            if s[:3] == "011":
+                    
+            if s[:3] == "111":
+                    
+            if s[:3] == "101":
+                    
+            if s[:3] == "010":
+                    

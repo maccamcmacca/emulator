@@ -138,25 +138,35 @@ def engine(inputfile):
     
     content = [x.strip() for x in content]
     print content
-    accum = 0
+    counter = 0
+    memory = 0
 
-    while s[:3] != "011":
+    while True:
         for w in range(len(content)):
             r = content[w]
+            opcode = r[:3]
+            operand = r[3:]
+            b = "{0:b}".format(int(operand))
+            binary = BitArray(bin=operand)
 
-            if s[:3] == "000":
-                accum = content[w]
-            if s[:3] == "100":
-                    
-            if s[:3] == "110":
-                    
-            if s[:3] == "001":
-                    
-            if s[:3] == "011":
-                    
-            if s[:3] == "111":
-                    
-            if s[:3] == "101":
-                    
-            if s[:3] == "010":
-                    
+            if opcode == "000":
+                binary = content[w]
+            if opcode == "100":
+                memory = -binary.uint
+            if opcode == "110":
+                memory = binary
+            if opcode == "001":
+                memory - binary.uint
+            if opcode == "011":
+                break
+            if opcode == "111":
+                memory * binary.uint
+            if opcode == "101":
+                memory / binary.uint
+            if opcode == "010":
+                memory + binary.uint
+            for i in range(len(content)):
+                print content[i]
+            print "\n"
+        break
+            

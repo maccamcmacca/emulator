@@ -4,3 +4,4 @@ testassem.txt
 *.json
 test.py
 testass.txt
+*.pyc

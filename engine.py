@@ -1,4 +1,4 @@
 import enginecode
 #from bitstring import BitArray
 
-enginecode.engine("test.txt")
+enginecode.engine("testass.txt")

@@ -148,25 +148,27 @@ def engine(inputfile):
             operand = r[3:]
             b = "{0:b}".format(int(operand))
             binary = BitArray(bin=operand)
-
-            if opcode == "000":
+            print binary.uint
+            print memory
+            if opcode == "000":#Jumps to a memory address
                 binary = content[w]
             if opcode == "100":
-                memory = -binary.uint
+                r[3:] = binary
             if opcode == "110":
-                memory = binary
-            if opcode == "001":
-                memory - binary.uint
+                memory = binary.uint
+            if opcode == "001":#
+                r = memory - binary.uint
             if opcode == "011":
                 break
             if opcode == "111":
-                memory * binary.uint
+                r = memory * binary.uint
             if opcode == "101":
-                memory / binary.uint
+                r = memory / binary.uint
             if opcode == "010":
-                memory + binary.uint
+                r = memory + binary.uint
             for i in range(len(content)):
                 print content[i]
             print "\n"
+            content[w] = r
         break
             

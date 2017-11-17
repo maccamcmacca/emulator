@@ -6,18 +6,18 @@ Instruction set similiar to the SSEM
 
 Instruction Set:
 
-000 = JMP
+000 = JMP Jumps to an address  
 
-100 = LDN
+100 = LDN Loads the address in the memory to the current address
 
-110 = STO
+110 = STO Stores the address in the memory to the accumulator
 
-001 = SUB
+001 = SUB Makes the accumulator = accumulator - opcode
 
-011 = STP
+011 = STP Stops the program
 
-111 = MUL
+111 = MUL Multiplies the accumulator = accumulator * opcode
 
-101 = DIV
+101 = DIV Multiplies the accumulator = accumulator / opcode
 
-010 = ADD 
+010 = ADD Multiplies the accumulator = accumulator + opcode

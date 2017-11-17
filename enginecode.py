@@ -151,7 +151,7 @@ def engine(inputfile):
             print binary.uint
             print memory
             if opcode == "000":#Jumps to a memory address
-                binary = content[w]
+                w = binary.uint
             if opcode == "100":
                 r[3:] = binary
             if opcode == "110":

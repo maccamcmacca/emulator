@@ -148,12 +148,14 @@ def engine(inputfile):
             operand = r[3:]
             b = "{0:b}".format(int(operand))
             binary = BitArray(bin=operand)
-            print binary.uint
-            print memory
+            m = "{0:b}".format(memory)
+            minary = BitArray(bin=memory)
+            
+            print str(binary.uint)
             if opcode == "000":#Jumps to a memory address
                 w = binary.uint
             if opcode == "100":
-                r[3:] = binary
+                r[3:] = str(minary)
             if opcode == "110":
                 memory = binary.uint
             if opcode == "001":#
@@ -166,9 +168,9 @@ def engine(inputfile):
                 r = memory / binary.uint
             if opcode == "010":
                 r = memory + binary.uint
-            for i in range(len(content)):
+            """for i in range(len(content)):
                 print content[i]
             print "\n"
-            content[w] = r
+            content[w] = r"""
         break
             

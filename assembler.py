@@ -24,8 +24,9 @@ if asordis == 1:
     enginecode.assemble(inputfile, outfile)
 
 if asordis == 2:
-    enginecode.disassemble(inputfile, outfile)
     enginecode.wipe(outfile)
+    enginecode.disassemble(inputfile, outfile)
+    
 
 #looks fancy
 print"---------------------------------\n\tFunction Complete\n---------------------------------"

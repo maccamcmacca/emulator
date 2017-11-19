@@ -1,4 +1,4 @@
-from bitstring import BitArray 
+from bitstring import BitArray
 
 #dissassembles binary files
 def disassemble(inputfile, outputfile):
@@ -9,9 +9,9 @@ def disassemble(inputfile, outputfile):
 
 
     for w in range(len(content)):
-        
+
         s = content[w]
-        
+
         readit = open(inputfile, "r")
         for line in readit:
             #gets every character past the 3rd
@@ -26,14 +26,14 @@ def disassemble(inputfile, outputfile):
             writeit.write(s)
             writeit.writelines(str(b.uint))
             writeit.writelines(l)
-        
+
         if s[:3] == "100":
             s = "LDN "
             l = "\n"
             writeit.write(s)
             writeit.writelines(str(b.uint))
             writeit.writelines(l)
-        
+
         if s[:3] == "110":
             s = "STO "
             l = "\n"
@@ -54,7 +54,7 @@ def disassemble(inputfile, outputfile):
             writeit.write(s)
             writeit.writelines(str(b.uint))
             writeit.writelines(l)
-        
+
         if s[:3] == "111":
             s = "MUL "
             l = "\n"
@@ -93,25 +93,25 @@ def assemble(inputfile, outputfile):
         if s[:3] == "JMP":
             s = "000"
             writeit.write(s)
-        
+
         if s[:3] == "LDN":
             s = "100"
             writeit.write(s)
-        
+
         if s[:3] == "STO":
             s = "110"
             writeit.write(s)
-            
+
 
         if s[:3] == "SUB":
             s = "001"
             writeit.write(s)
-            
+
 
         if s[:3] == "STP":
             s = "011"
             writeit.write(s)
-        
+
         if s[:3] == "MUL":
             s = "111"
             writeit.write(s)
@@ -132,45 +132,50 @@ def wipe(inputfile):
     s = open(inputfile, "w")
     s.writelines("")
 
+#actual engine to run the code
 def engine(inputfile):
     with open(inputfile) as l:
         content = l.readlines()
-    
+
     content = [x.strip() for x in content]
     print content
-    counter = 0
     memory = 0
-
+    w = 0
     while True:
-        for w in range(len(content)):
+        while w != len(content):
             r = content[w]
             opcode = r[:3]
             operand = r[3:]
             b = "{0:b}".format(int(operand))
             binary = BitArray(bin=operand)
             m = "{0:b}".format(memory)
-            minary = BitArray(bin=memory)
-            
-            print str(binary.uint)
+            #print int(r[3:], 2)
             if opcode == "000":#Jumps to a memory address
-                w = binary.uint
-            if opcode == "100":
-                r[3:] = str(minary)
-            if opcode == "110":
-                memory = binary.uint
-            if opcode == "001":#
-                r = memory - binary.uint
-            if opcode == "011":
+                w = int(binary.uint)-1
+            if opcode == "100":#puts the memory in the operand
+                r = opcode + m.zfill(len(operand))
+                content[w] = r
+            if opcode == "110":#puts the operand in memory
+                memory = int(operand, 2)
+            if opcode == "001":#subtracts from accumulator
+                c = "{0:b}".format(memory - binary.uint)
+                r = opcode + str(c)
+                content[w] = r
+            if opcode == "011":#stops execution
                 break
-            if opcode == "111":
-                r = memory * binary.uint
-            if opcode == "101":
-                r = memory / binary.uint
-            if opcode == "010":
-                r = memory + binary.uint
-            """for i in range(len(content)):
-                print content[i]
-            print "\n"
-            content[w] = r"""
+            if opcode == "111":#adds from accumulator
+                c = "{0:b}".format(memory * binary.uint)
+                r = opcode + str(c)
+                content[w] = r
+            if opcode == "101":#divides from accumulator
+                c = "{0:b}".format(memory / binary.uint)
+                r = opcode + str(c)
+                content[w] = r
+            if opcode == "010":#adds from accumulator
+                c = "{0:b}".format(memory + binary.uint)
+                r = opcode + str(c)
+                content[w] = r
+            if opcode != "000":
+                w+=1
         break
             

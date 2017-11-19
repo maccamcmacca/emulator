@@ -1,4 +1,5 @@
 # The Macca Emulator
+#v1.0.0
 
 Currently relies on a 3rd party library, aiming to remove this 
 

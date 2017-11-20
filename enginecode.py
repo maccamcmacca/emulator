@@ -137,42 +137,42 @@ def engine(inputfile):
     content = [x.strip() for x in content]
     print content
     memory = 0
-    w = 0
+    cnt = 0
     while True:
-        while w != len(content):
-            r = content[w]
+        while cnt != len(content):
+            r = content[cnt]
             opcode = r[:3]
             operand = r[3:]
             b = "{0:b}".format(int(operand))
             m = "{0:b}".format(memory)
             #print int(r[3:], 2)
             if opcode == "000":#Jumps to a memory address
-                w = int(operand, 2)-1
+                cnt = int(operand, 2)-1
             if opcode == "100":#puts the memory in the operand
                 r = opcode + m.zfill(len(operand))
-                content[w] = r
+                content[cnt] = r
             if opcode == "110":#puts the operand in memory
                 memory = int(operand, 2)
             if opcode == "001":#subtracts from accumulator
                 c = "{0:b}".format(memory - int(operand, 2))
                 r = opcode + str(c)
-                content[w] = r
+                content[cnt] = r
             if opcode == "011":#stops execution
                 break
             if opcode == "111":#adds from accumulator
                 c = "{0:b}".format(memory * int(operand, 2))
                 r = opcode + str(c)
-                content[w] = r
+                content[cnt] = r
             if opcode == "101":#divides from accumulator
                 c = "{0:b}".format(memory / int(operand, 2))
                 r = opcode + str(c)
-                content[w] = r
+                content[cnt] = r
             if opcode == "010":#adds from accumulator
                 c = "{0:b}".format(memory + int(operand, 2))
                 r = opcode + str(c)
-                content[w] = r
+                content[cnt] = r
             if opcode != "000":
-                w+=1
+                cnt += 1
         for jesus, count in enumerate(content):
             operand = content[jesus]
             print int(operand[3:], 2)

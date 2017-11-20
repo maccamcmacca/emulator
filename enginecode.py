@@ -1,5 +1,3 @@
-from bitstring import BitArray
-
 #dissassembles binary files
 def disassemble(inputfile, outputfile):
     with open(inputfile) as f:
@@ -16,7 +14,6 @@ def disassemble(inputfile, outputfile):
         for line in readit:
             #gets every character past the 3rd
             r = s[3:]
-            b = BitArray(bin=r)
         #append so that everything is looped and written
         writeit = open(outputfile, "a")
         #if statements that checks for the opcodes
@@ -24,56 +21,56 @@ def disassemble(inputfile, outputfile):
             s = "JMP "
             l = "\n"
             writeit.write(s)
-            writeit.writelines(str(b.uint))
+            writeit.writelines(str(int(r, 2)))
             writeit.writelines(l)
 
         if s[:3] == "100":
             s = "LDN "
             l = "\n"
             writeit.write(s)
-            writeit.writelines(str(b.uint))
+            writeit.writelines(str(int(r, 2)))
             writeit.writelines(l)
 
         if s[:3] == "110":
             s = "STO "
             l = "\n"
             writeit.write(s)
-            writeit.writelines(str(b.uint))
+            writeit.writelines(str(int(r, 2)))
             writeit.writelines(l)
 
         if s[:3] == "001":
             s = "SUB "
             l = "\n"
             writeit.write(s)
-            writeit.writelines(str(b.uint))
+            writeit.writelines(str(int(r, 2)))
             writeit.writelines(l)
 
         if s[:3] == "011":
             s = "STP "
             l = "\n"
             writeit.write(s)
-            writeit.writelines(str(b.uint))
+            writeit.writelines(str(int(r, 2)))
             writeit.writelines(l)
 
         if s[:3] == "111":
             s = "MUL "
             l = "\n"
             writeit.write(s)
-            writeit.writelines(str(b.uint))
+            writeit.writelines(str(int(r, 2)))
             writeit.writelines(l)
 
         if s[:3] == "101":
             s = "DIV "
             l = "\n"
             writeit.write(s)
-            writeit.writelines(str(b.uint))
+            writeit.writelines(str(int(r, 2)))
             writeit.writelines(l)
 
         if s[:3] == "010":
             s = "ADD "
             l = "\n"
             writeit.write(s)
-            writeit.writelines(str(b.uint))
+            writeit.writelines(str(int(r, 2)))
             writeit.writelines(l)
 #assembles assembly code into binary
 def assemble(inputfile, outputfile):
@@ -147,34 +144,36 @@ def engine(inputfile):
             opcode = r[:3]
             operand = r[3:]
             b = "{0:b}".format(int(operand))
-            binary = BitArray(bin=operand)
             m = "{0:b}".format(memory)
             #print int(r[3:], 2)
             if opcode == "000":#Jumps to a memory address
-                w = int(binary.uint)-1
+                w = int(operand, 2)-1
             if opcode == "100":#puts the memory in the operand
                 r = opcode + m.zfill(len(operand))
                 content[w] = r
             if opcode == "110":#puts the operand in memory
                 memory = int(operand, 2)
             if opcode == "001":#subtracts from accumulator
-                c = "{0:b}".format(memory - binary.uint)
+                c = "{0:b}".format(memory - int(operand, 2))
                 r = opcode + str(c)
                 content[w] = r
             if opcode == "011":#stops execution
                 break
             if opcode == "111":#adds from accumulator
-                c = "{0:b}".format(memory * binary.uint)
+                c = "{0:b}".format(memory * int(operand, 2))
                 r = opcode + str(c)
                 content[w] = r
             if opcode == "101":#divides from accumulator
-                c = "{0:b}".format(memory / binary.uint)
+                c = "{0:b}".format(memory / int(operand, 2))
                 r = opcode + str(c)
                 content[w] = r
             if opcode == "010":#adds from accumulator
-                c = "{0:b}".format(memory + binary.uint)
+                c = "{0:b}".format(memory + int(operand, 2))
                 r = opcode + str(c)
                 content[w] = r
             if opcode != "000":
                 w+=1
+        for jesus, count in enumerate(content):
+            operand = content[jesus]
+            print int(operand[3:], 2)
         break

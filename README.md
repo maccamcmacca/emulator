@@ -1,8 +1,6 @@
 # The Macca Emulator
 #v1.0.0
 
-Currently relies on a 3rd party library, aiming to remove this 
-
 Basically an emulator of an 8 bit computer.
 
 Instruction set similiar to the SSEM

@@ -178,6 +178,3 @@ def engine(inputfile):
             if opcode != "000":
                 w+=1
         break
-
-
-DONT DONT DONT DONT STOP THE BEAT

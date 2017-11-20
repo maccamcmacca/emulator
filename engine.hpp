@@ -13,11 +13,11 @@ void loadMem(char mem[]){
 
 }
 
-void printPoke(char mem[]){
+void printPoke(string mem[]){
     
         for(int i = 0; i<=8; i++){
             
-            cout << mem[i];
+            cout << mem[i] << endl;
     
         }
         cout << endl;
@@ -52,8 +52,8 @@ char poke(char l[], char x[][8]){
         
 }
 
-char load(char memory[8][8]){
-  ifstream inputfile("test.txt");
+char load(char memory[8][8], string file){
+  ifstream inputfile(file);
   for(int i = 0; i < 8; i++){
     for(int j = 0; j < 8; j++){
       inputfile >> memory[i][j];
@@ -84,6 +84,22 @@ int bintoDec(int num){
     //num = num;
     cout << rem;
 }
+
+void loadPok(string arr[], string thefile){
+
+    ifstream file(thefile);
+    if(file.is_open()){
+
+        
+
+        for(int i = 0; i<8; i++){
+            file >> arr[i];
+        }
+
+    }
+
+}
+
 /*THIS IS A TEMPORARY PLACEHOLDER FOR THIS WHILE I PISS ABOUT WITH THE MAIN FUNCTION
 //THIS ONLY EXISTS TO NOT CLUTTER UP MAIN ATM
 void run(){

@@ -173,7 +173,10 @@ def engine(inputfile):
                 content[w] = r
             if opcode != "000":
                 w+=1
+<<<<<<< HEAD
         for jesus, count in enumerate(content):
             operand = content[jesus]
             print int(operand[3:], 2)
+=======
+>>>>>>> eae18cedba9c673b0f944edf84685bc5ac8c5a36
         break

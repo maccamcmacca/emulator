@@ -1,5 +1,9 @@
-from bitstring import BitArray 
 import enginecode
+from Tkinter import Tk
+from tkFileDialog import askopenfilename
+from tkFileDialog import asksaveasfilename
+
+Tk().withdraw()
 
 x = "error"
 
@@ -15,8 +19,10 @@ while x == "error":
         print "Put in 1 or 2 you goddamn commie"
 
 #this means quite literally what it is
-inputfile = raw_input("Enter the file you would like to " + x + ": ")
-outfile = raw_input("Enter the output file: ")
+print "Choose the file you would like to input"
+inputfile = askopenfilename()
+print "Enter the name of the output file"
+outfile = asksaveasfilename()
 
 #basically does the function that the user selects
 if asordis == 1:

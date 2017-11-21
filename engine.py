@@ -1,4 +1,8 @@
 import enginecode
-#from bitstring import BitArray
+from Tkinter import Tk
+from tkFileDialog import askopenfilename
 
-enginecode.engine("testforprogram.txt")
+#Tk().withdraw()
+filename = askopenfilename()
+
+enginecode.engine(str(filename))

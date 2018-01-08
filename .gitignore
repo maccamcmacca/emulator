@@ -3,9 +3,7 @@ testassem.txt
 .vscode
 *.json
 test.py
-testass.txt
+*.txt
 *.pyc
-testforprogram.txt
 dissassemble
-assembled.txt
 binary

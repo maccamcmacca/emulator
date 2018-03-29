@@ -7,3 +7,5 @@ testass.txt
 *.pyc
 testforprogram.txt
 dissassemble
+assembler.h.gch
+assem.txt

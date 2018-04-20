@@ -5,7 +5,8 @@ typedef struct memory{
 
     int memory[31][31];
     int current[31];
-    int acc, opcode, operand;
+    int acc;
+    int opcode, operand;
 
 
 }memory;
@@ -28,6 +29,8 @@ void debug(memory* mem){
 }
 
 char* loadToArray(char *fileName, memory* mem){
+
+    mem->acc = 0;
 
  FILE *file = fopen(fileName, "r");
     char *code;
@@ -75,13 +78,17 @@ char* loadToArray(char *fileName, memory* mem){
 
 void fetch(memory* mem){
 
-
+for(int i = 0; i < 32; i++){
+mem->current[i] = mem->memory[mem->acc][i];
+}
 
 }
 
 void decode(memory* mem){
 
-
+for(int i = 0; i < 12; i++){
+mem->current[i] = mem->memory[mem->acc][i];
+}
 
 }
 
@@ -90,3 +97,15 @@ void execute(memory* mem){
 
 
 }
+
+int array_to_num(int arr[],int n){
+    char str[6][3];
+    int i;
+    char number[13] = {'\n'};
+
+    for(i=0;i<n;i++) sprintf(str[i],"%d",arr[i]);
+    for(i=0;i<n;i++)strcat(number,str[i]);
+
+    i = atoi(number);
+    return i;
+} 
